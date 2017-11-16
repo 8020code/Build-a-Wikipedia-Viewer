@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   $("#f1").submit(function (event) {
     event.preventDefault();
-    search($("#st").val()); // content of input field
+    search($("#st").val()); 
     console.log('submit');    
   });
   var search = function (q) {
@@ -18,7 +18,10 @@ $(document).ready(function () {
         $("#done").append('<p>Results<p/>');
         for (var i in pagesJSON) {
           console.log(pagesJSON[i].title);
-          $("#done").append('<p>' + JSON.stringify(pagesJSON[i].title) + '</p>');
+          var pageid = JSON.stringify(pagesJSON[i].title);
+          
+
+          $("#done").append('<a target="_blank" href="http://en.wikipedia.org/?curid=' + pagesJSON[i].pageid + '">' + pagesJSON[i].title + '</a><br>');
         }
       }
     });
