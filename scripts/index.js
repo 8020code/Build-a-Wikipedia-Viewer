@@ -1,32 +1,37 @@
-'use strict';
+/*jslint browser: true*/
+/*global $, jQuery*/
+/*global document, window, alert, console, require*/
 
 $(document).ready(function () {
+  'use strict';
 
+  var search = function (q) {
+    $.getJSON("https://en.wikipedia.org/w/api.php?action=query&list=search&utf8=&origin=*&format=json&srsearch=" + q, function (data) {
+      var query, search, title, pageid, snippe, pagesJSON = data.query.search, keys = Object.keys(pagesJSON), i;
+      console.log(data);
+
+      if (data !== undefined) {
+        $("#done").empty();
+        $("#done").append('<div id="fa"><h1>Results <i class="fa fa-times-circle" aria-hidden="true"></i></h1></div>');
+        
+        for (i in pagesJSON) {
+          if (pagesJSON.hasOwnProperty(i)) {
+            console.log(pagesJSON[i].title);
+            $("#done").append('<div class="res"><p><a target="_blank" href="http://en.wikipedia.org/?curid=' + pagesJSON[i].pageid + '">' + pagesJSON[i].title + '<br>' + pagesJSON[i].snippet + '</p></a></div>');
+          }
+        }
+      }
+      $("#fa").click(function () {
+        $("#done").empty();
+        console.log('fa');
+      });
+    });
+  };
   $("#f1").submit(function (event) {
     event.preventDefault();
     search($("#st").val());
     console.log('submit');
-  }); 
-  var search = function (q) {
-    $.getJSON("https://en.wikipedia.org/w/api.php?action=query&list=search&utf8=&origin=*&format=json&srsearch=" + q, function (data) {
-      var query, search, title, pageid, snippet;
-      var pagesJSON = data.query.search;
-      console.log(data);
-
-      var keys = Object.keys(pagesJSON);
-      if (data !== undefined) {
-        $("#done").empty();
-        $("#done").append('<h1>Results</h1>');
-        for (var i in pagesJSON) {
-          console.log(pagesJSON[i].title);          
-
-          $("#done").append('<h2><a target="_blank" href="http://en.wikipedia.org/?curid=' + pagesJSON[i].pageid + '">' + pagesJSON[i].title + '</a></h2><br><h3>' + pagesJSON[i].snippet +'</h3><br>');
-        }
-      }
-    });
-
-  };
-
+    $("form").trigger("reset");
+  });
 
 });
-

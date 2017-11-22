@@ -102,9 +102,10 @@ video {
 
 body {
   font-family: 'Schoolbell', cursive;
-  background-color: #000000;
+  background-color: #0f0f0f;
   color: #ffffff;
   font-size: 150%;
+  counter-reset: section;
 }
 
 #title {
@@ -112,6 +113,19 @@ body {
   color : rgb(234, 194, 13);
 }
 
+p {
+
+margin: 20px;
+}
+.res {
+  border: solid white 5px;
+  margin: 40px;
+  border-radius: 2px;
+  text-align: left;
+}
+.res:hover {
+  background-color: rgba(39, 38, 38, 0.685);
+}
 #done a {
   color: #ffffff;
   
@@ -136,8 +150,8 @@ font-family: 'Schoolbell',
 cursive; */
 
 .button {
-  border-right: 5px solid greenyellow;
-  border-bottom: 5px, solid greenyellow;
+  border: 2px solid greenyellow;
+  
   border-radius: 10px;  
   margin: 20px;
   padding: 0.5rem 0.75rem;
@@ -145,8 +159,7 @@ cursive; */
   transition: all 0.15s ease-in-out;
   display: inline-block;
   background-color: rgb(234, 194, 13);
-  font-size: 150%;
-  /* box-shadow: 0 6px 20px 0 rgba(38, 16, 185, 0.358); */
+  
   cursor: pointer;
   vertical-align: middle;
   
@@ -164,7 +177,9 @@ cursive; */
 }
 
 input {
-  border: 2px solid transparent;
+  border: 2px solid rgb(14, 160, 104);
+  font-family: 'Schoolbell',
+  cursive;
   border-radius: 10px;
   margin: 20px;
   padding: 0.5rem 0.75rem;
@@ -172,7 +187,7 @@ input {
   transition: all 0.15s ease-in-out;
   display: inline-block;
   background-color: #ffffff;
-  font-size: 150%;
+  font-size: 100%;
   box-shadow: 0 6px 20px 0 rgba(38, 16, 185, 0.358);  
   vertical-align: middle;
 }
@@ -181,16 +196,8 @@ input {
   font-family: 'Schoolbell',
   cursive;
 }
-
-h1 {
-  font-size: 200%;
-}
-
-h2 {
-  font-size: 180%;
-}
-h3 {
-  font-size: 160%;
+label {
+  margin: 20px;
 }
 input:invalid:hover {
   border: 2px dashed red;
@@ -198,4 +205,14 @@ input:invalid:hover {
 
 input:valid {
   border: 2px solid rgb(14, 160, 104);
+}
+#st:focus {
+  background-color: lightgray;
+  
+}
+
+p::before {
+  counter-increment: section;
+  content: counter(section) ". ";
+
 }
