@@ -112,6 +112,14 @@ body {
   color : rgb(234, 194, 13);
 }
 
+#done a {
+  color: #ffffff;
+  
+}
+
+#done a:hover {
+  color: #308c92;
+}
 .center {
   margin-top: 50px;
   text-align: center;
@@ -156,7 +164,7 @@ cursive; */
 }
 
 input {
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 10px;
   margin: 20px;
   padding: 0.5rem 0.75rem;
@@ -172,4 +180,22 @@ input {
 .form-group {
   font-family: 'Schoolbell',
   cursive;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 180%;
+}
+h3 {
+  font-size: 160%;
+}
+input:invalid:hover {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid rgb(14, 160, 104);
 }
